@@ -11,22 +11,27 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class SearchBarComponent {
+    // The city name that user types in the input
     city: string = '';
-    //use for emitting the search event to parent component
+    
+    // This sends the search event up to the parent component
     @Output() search: EventEmitter<string> = new EventEmitter<string>();
 
-    //emit the search event with the city name
+    // Called when user clicks the search button
     onSearch(){
       const trimmedCity = this.city.trim();
-      if(!trimmedCity) return; //if input is empty, do nothing
-        this.search.emit(trimmedCity);
+      // Don't search if input is empty
+      if(!trimmedCity) return;
       
+      // Send the city name to parent component
+      this.search.emit(trimmedCity);
     }
-    //handle enter key press
+    
+    // Called when user presses Enter key in the input
     onEnter(event: Event) {
-    const keyboardEvent = event as KeyboardEvent; // Type assertion
-    if (keyboardEvent.key === 'Enter') {
-      this.onSearch();
+      const keyboardEvent = event as KeyboardEvent;
+      if (keyboardEvent.key === 'Enter') {
+        this.onSearch();
+      }
     }
-  }
 }

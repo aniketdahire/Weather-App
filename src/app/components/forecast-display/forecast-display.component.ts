@@ -9,5 +9,6 @@ import { Component, Input } from '@angular/core';
   styleUrl: './forecast-display.component.css'
 })
 export class ForecastDisplayComponent {
+  // Array of forecast data for the next 5 days
   @Input() forecastData: any[] = [];
 }

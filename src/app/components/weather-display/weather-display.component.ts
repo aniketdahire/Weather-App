@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-weather-display',
   standalone: true,
@@ -8,6 +9,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './weather-display.component.css'
 })
 export class WeatherDisplayComponent {
-  //input property to receive weather data from parent component
+  // Gets weather data from the parent component
   @Input() weatherData: any;
 }

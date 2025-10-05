@@ -1,9 +1,10 @@
+
 <app-search-bar (search)="onSearch($event)"></app-search-bar>
 
 <app-loader *ngIf="loading"></app-loader>
 
-<app-error-message *ngIf="errorMessage" [errorMessage]="errorMessage"></app-error-message>
+<app-error-message *ngIf="errorMessage" [errorMessage]="errorMessage" (dismiss)="onErrorDismiss()"></app-error-message>
 
-<app-forecast-display *ngIf="forecastData.length" [forecastData]="forecastData"></app-forecast-display>
+<app-forecast-display *ngIf="!loading && forecastData.length" [forecastData]="forecastData"></app-forecast-display>
 
-<app-weather-display *ngIf="weatherData" [weatherData]="weatherData"></app-weather-display>
+<app-weather-display *ngIf="!loading && weatherData" [weatherData]="weatherData"></app-weather-display>

@@ -1,4 +1,11 @@
-<div *ngIf="errorMessage" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative max-w-md mx-auto my-4" role="alert">
-    <strong class="font-bold">Error:</strong>
-    <span class="block sm:inline">{{ errorMessage }}</span>
+<div *ngIf="errorMessage" class="bg-red-50 border border-red-200 text-red-600 px-3 py-2 rounded-lg max-w-sm mx-auto my-3 shadow-sm text-sm" role="alert">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center">
+            <span class="text-red-500 mr-2 flex-shrink-0 text-lg font-bold">⚠</span>
+            <span class="font-medium">{{ errorMessage }}</span>
+        </div>
+        <button (click)="onDismiss()" class="text-red-400 hover:text-red-600 focus:outline-none ml-2 flex-shrink-0 text-lg font-bold">
+            ×
+        </button>
+    </div>
 </div>

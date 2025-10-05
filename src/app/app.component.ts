@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { WeatherDisplayComponent } from './components/weather-display/weather-display.component';
 import { CommonModule } from '@angular/common';
@@ -12,7 +11,6 @@ import { ForecastDisplayComponent } from './components/forecast-display/forecast
   selector: 'app-root',
   standalone: true,
   imports: [
-    RouterOutlet,
     SearchBarComponent,
     WeatherDisplayComponent,
     CommonModule,
@@ -24,16 +22,17 @@ import { ForecastDisplayComponent } from './components/forecast-display/forecast
   styleUrl: './app.component.css',
 })
 export class AppComponent {
+  // Component state - these get updated from the weather service
   weatherData: any = null;
   loading: boolean = false;
   errorMessage: string = '';
   forecastData: any[] = [];
 
-  //handle search event from search bar component
   constructor(private weatherService: WeatherService) {}
 
   ngOnInit() {
-    // Subscribe to service
+    // Listen to changes from the weather service
+    // This way the UI updates automatically when data changes
     this.weatherService.weatherData$.subscribe(
       (data) => (this.weatherData = data)
     );
@@ -47,11 +46,17 @@ export class AppComponent {
       (error) => (this.errorMessage = error)
     );
 
-    // Fetch last searched city on load
+    // Load the last searched city when the app starts
     this.weatherService.fetchLastCity();
   }
 
+  // Called when user searches for a city
   onSearch(city: string) {
     this.weatherService.fetchWeather(city);
+  }
+
+  // Called when user clicks the X button on error message
+  onErrorDismiss() {
+    this.weatherService.error$.next('');
   }
 }

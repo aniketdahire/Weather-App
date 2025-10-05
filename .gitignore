@@ -41,7 +41,20 @@ testem.log
 .DS_Store
 Thumbs.db
 
-/environment.ts
-/environment.prod.tssrc/environments/
-# Environment files
-src/environments/environment*.ts
+# Environment files and sensitive data
+.env
+.env.local
+.env.development
+.env.production
+.env.staging
+
+# API Keys and secrets
+src/config/api.config.ts
+src/app/environments/environments.ts
+src/app/environments/environments.prod.ts
+
+# Security files
+SECURITY.md
+*.key
+*.pem
+secrets.json
