@@ -48,10 +48,6 @@ Thumbs.db
 .env.production
 .env.staging
 
-# API Keys and secrets
-src/config/api.config.ts
-src/app/environments/environments.ts
-src/app/environments/environments.prod.ts
 
 # Security files
 SECURITY.md
