@@ -1,0 +1,42 @@
+<div *ngIf="weatherData" class="bg-white/30 backdrop-blur-md p-6 rounded-xl shadow-lg max-w-md mx-auto mt-6">
+  <!-- City Name -->
+  <h2 class="text-2xl font-bold mb-4 text-center text-gray-800">
+    {{ weatherData.name }}, {{ weatherData.sys.country }}
+  </h2>
+
+  <!-- Temperature + Icon -->
+  <div class="flex items-center justify-between">
+    <!-- Left: Temperature & Description -->
+    <div class="flex flex-col justify-center">
+      <p class="text-4xl font-semibold text-gray-900">{{ weatherData.main.temp }}°C</p>
+      <p class="capitalize text-gray-700">{{ weatherData.weather[0].description }}</p>
+    </div>
+
+    <!-- Right: Weather Icon -->
+    <img
+      [src]="'http://openweathermap.org/img/wn/' + weatherData.weather[0].icon + '@2x.png'"
+      alt="{{ weatherData.weather[0].description }}"
+      class="w-24 h-24"
+    />
+  </div>
+
+  <!-- Additional Info Grid -->
+  <div class="mt-6 grid grid-cols-2 gap-4 text-gray-800">
+    <div class="bg-white/50 p-3 rounded-lg shadow flex flex-col items-center">
+      <p class="font-medium">Humidity</p>
+      <p class="text-lg font-semibold">{{ weatherData.main.humidity }}%</p>
+    </div>
+    <div class="bg-white/50 p-3 rounded-lg shadow flex flex-col items-center">
+      <p class="font-medium">Wind</p>
+      <p class="text-lg font-semibold">{{ weatherData.wind.speed }} m/s</p>
+    </div>
+    <div class="bg-white/50 p-3 rounded-lg shadow flex flex-col items-center">
+      <p class="font-medium">Pressure</p>
+      <p class="text-lg font-semibold">{{ weatherData.main.pressure }} hPa</p>
+    </div>
+    <div class="bg-white/50 p-3 rounded-lg shadow flex flex-col items-center">
+      <p class="font-medium">Feels Like</p>
+      <p class="text-lg font-semibold">{{ weatherData.main.feels_like }}°C</p>
+    </div>
+  </div>
+</div>

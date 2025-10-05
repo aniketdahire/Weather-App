@@ -1,0 +1,17 @@
+<!-- search-bar -->
+<div class="flex justify-center items-center gap-2 my-6">
+    <input
+        type="text"
+        class="text-xl border rounded-lg font-light p-2 w-64 shadow-xl focus:outline-none capitalize placeholder:lowercase"
+        placeholder="Search for a city..."
+        (keyup.enter)="onEnter($event)"
+        [(ngModel)]="city"
+    />
+    <button
+        (click)="onSearch()"
+        class="text-xl bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg hover:bg-blue-700 transition-transform duration-300"
+    >
+        Search
+    </button>
+
+</div>
