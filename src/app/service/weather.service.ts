@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { catchError, map, Observable, throwError, BehaviorSubject, forkJoin, timer } from 'rxjs';
-import { API_CONFIG } from '../../config/api.config';
+import { environment } from '../environments/environments';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WeatherService {
   // API configuration - using OpenWeatherMap free tier
-  private apiKey: string = API_CONFIG.WEATHER_API_KEY;
-  private apiUrl: string = API_CONFIG.WEATHER_API_URL;
-  private forecastUrl: string = API_CONFIG.FORECAST_API_URL;
+  private apiKey: string = environment.weatherApiKey;
+  private apiUrl: string = 'https://api.openweathermap.org/data/2.5/weather';
+  private forecastUrl: string = 'https://api.openweathermap.org/data/2.5/forecast';
 
   // Using BehaviorSubjects for reactive state management
   // This way components can subscribe to changes automatically
